@@ -11,36 +11,25 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
-    MyOpenGLView myOpenGLView;
-    private ObjLoader loader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        myOpenGLView = new MyOpenGLView(this);
 
 
         if(OpenCVLoader.initDebug()){
-//            Toast.makeText(getApplicationContext(),"Opencv loaded.",Toast.LENGTH_SHORT).show();
-            try {
-                loader = new ObjLoader(getAssets());
-            } catch (IOException e1) {
-                // TODO Auto-generated catch block
-                System.out.println("loader failed");
-            }
-            myOpenGLView.setEGLContextClientVersion(3);
-            myOpenGLView.setRenderer(new MyGLRenderer(this,loader));
+            Toast.makeText(getApplicationContext(),"Opencv loaded.",Toast.LENGTH_SHORT).show();
+
         }else {
             Toast.makeText(getApplicationContext(),"Opencv failed.",Toast.LENGTH_SHORT).show();
         }
-        setContentView(myOpenGLView);
+        setContentView(R.layout.activity_main);
     }
     @Override
     protected void onResume()
     {
         // The activity must call the GL surface view's onResume() on activity onResume().
         super.onResume();
-        myOpenGLView.onResume();
     }
 
     @Override
@@ -48,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     {
         // The activity must call the GL surface view's onPause() on activity onPause().
         super.onPause();
-        myOpenGLView.onPause();
     }
 
 }

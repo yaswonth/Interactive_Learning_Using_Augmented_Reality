@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
                     PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CAMERA},
                         50); }else {
-                Intent ine = new Intent(this,MainActivity2.class);
+                Intent ine = new Intent(this,CameraActiv.class);
                 startActivity(ine);
             }
 
